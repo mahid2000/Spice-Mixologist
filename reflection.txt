@@ -1,0 +1,76 @@
+The Goal of this assignment was to make a game in which the user must guess the mixture of spices a chef uses. The spices were placed in a 5 character array format. The first character of each spice represnted that spice (e,g 'N' = Nutmeg).
+There were 5 array sections in total, each of which corresponded to a teaspoon value. The starting value of the array would be worth 1 teaspoon and the seccond would be worth 2 teaspoons and the thirt would be worth 3 teaspoons,
+ this pattern is repeated until the fifth array value which is worth 5 teaspoons. The users inputed list of characters is compared with the actual chefs recipie and outputs if the right spices are present in the right quantities or not.
+This feedback would allow the user to refine their recipie until it matches the chefs mix. The game will work in a loop allowing for the user to get multiple guessing attempts until they can work out the exact recipie, at which point the game 
+ends and a congratulations message is displayed. 
+
+Most of the code has been described by the comments I have made on the code, howeevr below is just a rough overview of what I have done for majority of the methods and classes.
+
+
+
+SpiceMix class
+
+
+	SpiceMix Constructor:
+		- A character array was used to store the characters of spices as indexing through an array was easier than using the .get() method on a string. Also I knew the exact size of the array would be 5 so a size 5 array called 
+		'Spices' was initialised before and then the constructor was sued to construct it Spice by Spice.
+	
+	getSpice:
+		- This method uses standard indexing to return the Char stored at given indes of Spices Array.
+
+	toString:
+		- This method returns the 5 spices, separated by spaces, as a string. The for loop was sued to do the first 4 values and add spaces however the last values Spices[4] was added to the string manually as I didnt want to 
+		add a space at the end of the string after the last character. The last char is Spices[4] as the index of an Array starts from 0.
+
+Attempt
+
+	toString:
+		- This returns a String representing the SpiceMix followed by the number of good and wrong quantity spices.I used string formatting to make it easier as it could all fit in one string insetad of smaller ones being added 
+		together.
+
+	Public Constructor:
+		- This public constructor takes two SpiceMix arguments, suggestion and solution respectively.  It also calls setValue as SpiceMix cannot be changed but a value can be set to it. This also prevents getNumWrongQuantity
+		and getNumGood from having to recalculate the values each time they are called.
+	
+	getNumGood:
+		- This method returns the number of correct as an int.
+
+	getNumWrongQuality:
+		-This method returns number of matching spices without the quantity.
+
+	setValues:
+		- Spices Variable stores the letters for valid Spices. The function Itirates through all of them and checks every letter for the indicies they appear in the suggested mix and solution. If they appear in the solution, the index is 
+		incrimenetd by one (preventing it being zero), and then multiplied by 100 ((j+1)*100). The answer of this is thena dded to spiceValues at the index corresponding to the current spice index. If they appear in the suggestion,
+               the index is incrimented by one (preventing it from being 0), and is then added to spiceValues at the index corresponding to the current letter in the Spices. After the loop each spice in spices has a corresponding value in spiceValues.
+		If the value is zero, the spice is part of neither the solution nor the suggestion. After Integer Divison with 100, the reasulting values is the total given Spices in the solution (spiceValues[i] / 100). After Divison with remainders
+		,(spiceValues[i] % 100), the answer is the amount of the given spice, spice[i] in the suggestion. If both the Integer divison and remainder divison values are the same, then the smount is good. If the values are different and both
+		not equal to 0, then the spices are right but the ammount is wrong. If one or the other of the answers for integer and remainder division is equal to 0, then there are some of the spices missing from the suggestion/solution..
+		The SpiceMix can only be correct if both the reasults fron Integer and Remainder Divison is equal to 0,or equilivant to each other.
+
+SpiceMixGame
+
+	Node Class:
+		- Standard node class for linked list with head and next, etc etc..
+		
+	toString:
+		- Modified to print all previous attempts from the list recursively starting from the head.
+
+	LinkedSpice:
+		-Linked list where each new element is added to the beggining of the list. 
+
+	Constructors:
+		-SpiceMixGame ahs two constructors as instructed. One of them generates a random solution using the random function and numeric values of characters whilst the other generates the game solution.
+
+SpiceMixologistCli
+
+	playGame:
+		-The play game function is recalled until one of the attempts egts the right answer. When the answer is correct, finished is rendered True, hence cutting off the while loop that keeps on calling playGame.
+
+	UserInput:
+		- UserInput is a char array[] of user inputs. The user is asked to input 5 characters and regardless of weather a spice character is input, it still carries on asking user for input for 5 characters.
+		I made an spice counter which checks if each input character represents a string, and if it does i add one to the counter. If by the end of the user input being scanned, if the couneter hasnt reached 5 chars,
+		then an invalid SpiceMix error is thrown.
+
+
+		with spaced inbwteen each of the characters, we must read every other character and note it down in a seperate size 5 char array called UserInput. This is why I did (2*i) within the for loop when getting user input.
+

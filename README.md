@@ -1,5 +1,6 @@
 # Spice-Mixologist
 CS1811: OOP1 Assignemnt 2
+
 A text based game to guess the perfect spice mix.
 
 

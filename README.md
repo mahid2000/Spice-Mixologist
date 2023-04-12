@@ -37,18 +37,9 @@ Thyme.
 
 We use letters N, O, P, Q, R, S, and T to represent them (first letter of each spice). We use the order of the sequence to represent the quantity of each spice (position 1 = 1 tea spoons (tsp), position 2 = 2 tsp, etc.)
 
-For instance 
+For instance 'Q P T S R' represents a spice mix with 1 tsp of quassia, 2 tsp of pepper, 3 tsp of thyme, 4 tsp of salt, and 5 tsp of rosemary.
 
-'Q P T S R'
-represents a spice mix with 1 tsp of quassia, 2 tsp of pepper, 3 tsp of thyme, 4 tsp of salt, and 5 tsp of rosemary.
-
-Suppose the chef was expecting the mix 
-
-'Q P T S R'
-and  the user played
-'R P O S Q'
-the chef would say that
-'two spices taste good and are in the right quantity (Pepper and Salt), and
+Suppose the chef was expecting the mix  'Q P T S R' and  the user played 'R P O S Q' the chef would say that 'two spices taste good and are in the right quantity (Pepper and Salt), and
 two spices taste ok, but are given in the wrong quantity (Rosemary and Quassia).'.
 The game will proceed in a loop. First, the list of previous attempts so far is displayed – this includes the guesses and the chef’s feedback. The user is then asked to input their next suggestion. If the answer is correct, “Congratulations!” is displayed and the program terminates. Otherwise, the game loops.
 
